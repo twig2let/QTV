@@ -3,13 +3,27 @@ import QtQuick.Controls 1.3
 import QtMultimedia 5.0
 
 
-ApplicationWindow {
-    title: qsTr("Hello World")
+ApplicationWindow {    
     id: window
     width: 1440
     height: 900
     visible: true
 
+
+    // Overlay
+    Item {
+        width: 100
+        height: 100
+        z: 1
+
+        Rectangle {
+            width: window.width/4
+            height: window.height
+            color: "green"
+        }
+    }
+
+    // Player
     Item {
         MediaPlayer {
             id: mediaplayer
