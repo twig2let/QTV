@@ -7,7 +7,7 @@ ApplicationWindow {
     id: window
     width: 1440
     height: 900
-    visible: true
+    visible: true    
 
 
     // Overlay
@@ -17,9 +17,14 @@ ApplicationWindow {
         z: 1
 
         Rectangle {
+            id: sidebar
             width: window.width/4
             height: window.height
             color: "green"
+            visible: false
+
+            focus: true
+            Keys.onSpacePressed: showMenu()
         }
     }
 
@@ -32,10 +37,16 @@ ApplicationWindow {
         }
 
         VideoOutput {
+            id: videoOutput
             width: window.width
             height: window.height
             fillMode: 'PreserveAspectFit'
             source: mediaplayer
         }
+    }
+
+    // Show Menu
+    function showMenu() {
+        sidebar.visible = true;
     }
 }
