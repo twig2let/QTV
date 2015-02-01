@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>images/Twitter_logo_blue.png</file>
     </qresource>
 </RCC>

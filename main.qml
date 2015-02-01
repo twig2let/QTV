@@ -10,39 +10,53 @@ ApplicationWindow {
     height: 900
     visible: true
 
+    // Global Properties
+    property int _windowWidth: window.width
+    property int _windowHeight: window.height
 
-
-    // Overlay
+    // Top Menu
     Item {
-        width: 100
-        height: 100
         z: 1
 
         Rectangle {
-            id: sidebar
-            width: window.width/4
-            height: window.height
+            id: topMenu
+            width: _windowWidth; height: _windowHeight*0.08
+            color: 'white'
 
-            visible: false
+            Image {
+                id: twitterImage
+                fillMode: Image.PreserveAspectFit
+                anchors.verticalCenter: parent.verticalCenter
+                height: topMenu.height*0.6
+                source: 'images/Twitter_logo_blue.png'
+                verticalAlignment: Image.AlignVCenter
+                smooth: true;
+            }
 
-            ColorOverlay {
-//                  id: jeff
-//                  width: window.width
-//                  height: window.height
-//                  source: videoOutput
-
-              }
-
-            focus: true
-            Keys.onSpacePressed: showMenu()
-
+            MouseArea {
+                anchors.fill: twitterImage
+                onClicked: {
+                    showTwitterStream();
+                }
+                cursorShape: Qt.PointingHandCursor;
+            }
         }
-
     }
 
-    // Player
+    // Show Twitter Stream
+    function showTwitterStream() {
+        console.info('Launching Twitter Stream')
+    }
+
+
+
+
+
+
+//    // Player
     Item {
         id: bob
+        z: 0
 
         MediaPlayer {
             id: mediaplayer
@@ -74,11 +88,9 @@ ApplicationWindow {
     }
 
 
-    // Show Menu
-    function showMenu() {
-        sidebar.visible = !sidebar.visible;
-        videoOutput.angle = videoOutput.angle > 0 ? 0 : 10;
-
-
-    }
+//    // Show Menu
+//    function showMenu() {
+//        sidebar.visible = !sidebar.visible;
+//        videoOutput.angle = videoOutput.angle > 0 ? 0 : 10;
+//    }
 }
