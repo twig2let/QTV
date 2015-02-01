@@ -1,6 +1,9 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 
+#include <QGraphicsRotation>
+#include <QVector3D>
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
